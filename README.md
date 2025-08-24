@@ -1,68 +1,50 @@
 # Dining Hall Management System
-## Overview
-This project addresses the challenges faced by Syracuse University's dining halls in manually managing part-time student worker shifts. With over 500 student employees across five major dining halls (Ernie, Shaw, Sadler, Brockway, and Graham), the existing Excel-based scheduling process leads to errors, confusion regarding working hours, and a lack of transparency.
 
-The Dining Hall Management System aims to create a comprehensive database solution to streamline shift scheduling, improve access to available working hours, and enhance transparency and efficiency for student employees, supervisors, and managers.
+## 🍽️ Overview
 
-## Business Problem
-The current manual system at Syracuse University dining halls results in:
+Welcome to the Dining Hall Management System! This project automates student worker shift scheduling for Syracuse University's dining halls, replacing the manual, error-prone, and confusing Excel-based system. Our solution provides a transparent and efficient way to manage over 500 student employees across five major dining halls.
 
-**Scheduling Errors**: Inaccuracies in assigning shifts.
+## 🎯 Project Goals
 
-**Worker Confusion**: Students are unclear about their working hours.
+* **Facilitate Easy Access**: Provide a quick and straightforward interface for shift schedules.
+* **Increase Transparency**: Ensure clarity in tracking employee work hours and payments.
+* **Improve Efficiency**: Streamline the scheduling and management process for all stakeholders.
+* **Reduce Confusion**: Minimize misunderstandings for student workers regarding their shifts and hours.
 
-**Lack of Transparency**: Difficulty in tracking employee progress and payments.
+## 💻 System Features
 
-## Project Goals
-**Facilitate Easy Access**: Provide quick and straightforward access to shift schedules.
+The system is built on a robust database and a user-friendly Power Apps interface.
 
-**Increase Transparency**: Ensure clarity in tracking employee work hours and payments.
+### **Database Components**
 
-**Improve Efficiency**: Streamline the scheduling and management process for all stakeholders.
+* **Tables**: `dininghalls`, `supervisors`, `student_employees`, `shifts`, `subshifts_ernie`, `subshifts_saddler`, `total_hours`, `worked_hours`, `shifts_scheduled_sadler`, `shifts_scheduled_ernie`, `shifts_scheduled`.
+* **Lookup Tables**: `shift_time_lookup`, `shift_type_lookup`, `shift_day_lookup`.
+* **Stored Procedures**: `daily_shifts`, `employee_hours`, `sub_e`, `subpick_e`, `sub_s`, `subpick_s`. These handle core operations like submitting and picking up sub-shifts.
+* **Views**: `v_total_hours_ernie`, `v_total_hours_saddler`, `v_subshifts_ernie`, `v_subshifts_saddler`, `v_final_payments`. These provide summarized data for easy reporting and payments.
+* **Triggers**: `t_subbed_e`, `t_subpicked_e`, `t_subbed_s`, `t_subpicked_s`. These automate updates to employee hours when shifts are subbed or picked up.
 
-**Reduce Confusion**: Minimize misunderstandings among student workers regarding their shifts.
+### **Key Processes**
 
-## System Features
-The system is built around a robust database designed to manage:
+1.  **Shift Scheduling**: Supervisors can easily assign shifts to student employees.
+2.  **Submitting Shifts**: Student employees can submit their shifts for others to pick up. This action automatically reduces the subbing student's total hours.
+3.  **Picking Up Shifts**: Students can pick up available sub-shifts. The system automatically adds these hours to their worked hours.
+4.  **Total Hours Tracking**: The system maintains a real-time record of total hours worked by each student.
+5.  **Payment Calculation**: The `v_final_payments` view automatically calculates total payment based on worked hours, ensuring transparency and accuracy.
 
-## Database Components
-**Tables**: dininghalls, supervisors, student_employees, shifts, subshifts_ernie, subshifts_saddler, total_hours, worked_hours, shifts_scheduled_sadler, shifts_scheduled_ernie, shifts_scheduled.
+### **Power Apps Interface**
 
-**Lookup** **Tables**: shift_time_lookup, shift_type_lookup, shift_day_lookup.
+The user-friendly interface provides a seamless experience for students, supervisors, and managers.
 
-**Stored** **Procedures**: daily_shifts, employee_hours, sub_e, subpick_e, sub_s, subpick_s. These procedures handle operations like submitting and picking up sub-shifts.
+* **Home and Login Page**: Secure access for different user roles.
+* **Dining Halls Page**: Displays a list of dining halls, their addresses, and operating hours.
+* **Student Profile Page**: Shows a student's ID, name, permanent shifts, and total working hours.
+* **Pick Shift Page**: Allows students to select and claim available sub-shifts.
+* **Sub Shift Page**: Enables students to view and manage their assigned shifts and submit them for subbing.
 
-**Views**: v_total_hours_ernie, v_total_hours_saddler, v_subshifts_ernie, v_subshifts_saddler, v_final_payments. These views provide summarized and specific data, such as total hours worked and final payment calculations.
+---
 
-**Triggers**: t_subbed_e, t_subpicked_e, t_subbed_s, t_subpicked_s. These triggers automate updates to employee hours when shifts are subbed or picked up.
+## 🚀 Get Started
 
-## Key Processes
-Shift Scheduling: Manages the assignment of shifts to student employees.
+The Dining Hall Management System is designed to be a comprehensive and efficient solution for managing dining hall operations. It is a testament to how technology can solve real-world problems and improve the daily lives of everyone involved.
 
-**Submitting** **Shifts**: Allows student employees to submit their shifts for others to pick up. This process automatically reduces the subbing student's total hours.
-
-**Example**: Executing sub_e with shift_id and student_id triggers t_subbed_e.
-
-**Picking** **Up** **Shifts**: Enables student employees to pick up available sub-shifts. This process automatically adds hours to the picking student's worked hours.
-
-**Example**: Executing subpick_e with sub_id and student_id triggers t_subpicked_e.
-
-**Total** **Hours** **Tracking**: The system keeps track of the total hours worked by each student employee.
-
-**Payment** **Calculation**: A v_final_payments view calculates the total payment based on worked hours.
-
-## Power Apps Interface
-The project includes a user-friendly interface built with Power Apps to interact with the database.
-
-**Home and Login Page**: Secure access for student employees, supervisors, and managers.
-
-**Dining Halls Page**: Displays a list of dining halls with their addresses and operating hours.
-
-**Student Profile Page**: Shows student ID, name, permanent shift IDs, and total working hours, with options to "Pick Shifts" or "Sub Shifts."
-
-**Pick Shift Page**: Allows students to select available shifts based on date and time.
-
-**Sub Shift Page**: Enables students to view and manage their permanent shifts, and to submit them for subbing.
-
-
-
+For more information, contact the project team.
